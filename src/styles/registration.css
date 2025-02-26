@@ -1,0 +1,122 @@
+/* Container for the signup form */
+.signup-container {
+    max-width: 500px;
+    margin: 80px auto; /* Add a top margin */
+    padding: 20px;
+    background-color: #FFF5EE;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increase the shadow size and intensity */
+  }
+  /* Adjust margins for smaller screens */
+@media screen and (max-width: 768px) {
+  .signup-container {
+      margin: 80px 16px; /* Adds margin on the x-axis (left & right) */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .signup-container {
+      margin: 40px 10px; /* Reduce top margin further and add x-axis margin */
+  }
+}
+  
+  
+  /* Style for the form itself */
+  .signup-form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .signup-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1D2B53;
+    font-weight: bold; /* Change to 'bold' or a numerical value like '700' */
+    font-size: 24px; /* Increase the font size */
+  }
+  
+  
+  /* Style for each form group */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Style for the submit button */
+  .create-button {
+    background-color: #1D2B53;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .create-button:hover {
+    background-color: #4A4A4A;
+    transform: scale(1.05);
+  }
+  
+  /* Style for the login link paragraph */
+  .login-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #1D2B53;
+  }
+  
+  .login-link a {
+    color: #4CAF50;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  .text-center {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .google-button {
+    display: inline-flex; /* Use inline-flex to center the button */
+    align-items: center;
+    justify-content: center;
+    background-color: #1D2B53;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .google-button .google-logo {
+    margin-right: 10px;
+    width: 20px; /* Adjust the width to make the logo smaller */
+    height: 20px; /* Adjust the height to maintain the aspect ratio */
+  }
+  
+  .google-button:hover {
+    background-color: #4A4A4A;
+    transform: scale(1.05);
+  }

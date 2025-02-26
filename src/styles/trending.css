@@ -1,0 +1,75 @@
+.trending-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center; /* Center align the card-trends */
+    padding: 0 10px; /* Add padding to the container */
+}
+
+.card-trend {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(33.33% - 20px); /* Three card-trends per row with space between */
+    max-width: 400px;
+    overflow: hidden;
+    box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.card-trend h2 {
+    color: #1D2B53;
+    font-size: 1.5rem; /* Adjust font size */
+}
+
+.scrollable-content {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    display: block; /* Required for horizontal scrolling */
+}
+
+thead {
+    background-color: #f4f4f4;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    font-weight: bold;
+    color: red;
+}
+
+td img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 1024px) {
+    .card-trend {
+        width: calc(50% - 20px); /* Two card-trends per row on medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .card-trend {
+        width: calc(100% - 20px); /* One card-trend per row on small screens */
+    }
+    
+    .card-trend h2 {
+        font-size: 1.2rem; /* Adjust font size */
+    }
+
+    .scrollable-content {
+        max-height: 200px; /* Reduce max height for smaller screens */
+    }
+}

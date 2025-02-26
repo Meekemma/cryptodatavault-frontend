@@ -1,0 +1,63 @@
+.container {
+    max-width: 100%;
+    margin:  50px;
+    padding: 0 1rem; /* Ensure padding on the sides */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.overflow-x-auto {
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #f4f4f4;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    white-space: nowrap; /* Prevent text from wrapping */
+}
+
+th {
+    font-weight: bold;
+    color: #333;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+img {
+    max-width: 2rem; /* Control image size */
+    height: auto;
+}
+
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 1.5rem; /* Adjust font size for medium screens */
+    }
+
+    .container {
+        padding: 0 0.5rem; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    table {
+        font-size: 0.875rem; /* Adjust font size for small screens */
+    }
+
+    h1 {
+        font-size: 1.25rem; /* Further reduce font size */
+    }
+}
