@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import '../styles/CustomCarousel.css';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
-import 'react-toastify/dist/ReactToastify.css'; // Import Toastify CSS
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const Subscription = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
@@ -22,7 +23,7 @@ const Subscription = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const res = await axios.post('http://localhost:8000/email-subscription/', formData);
+      const res = await axios.post(`{BASE_URL}/email-subscription/`, formData);
       if (res.status === 200) {
         toast.success('Successfully subscribed to the newsletter');
         setFormData({ email: '' }); // Reset the form to initial state

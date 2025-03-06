@@ -7,6 +7,7 @@ import PolicyFooter from './PolicyFooter';
 import axios from 'axios';
 
 const Verification = () => {
+  const BASE_URL = import.meta.env.VITE_BASE_URL;
   const [codes, setCodes] = useState(Array(6).fill(''));
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +38,7 @@ const Verification = () => {
       return;
     }
     try {
-      await axios.post('http://127.0.0.1:8000/resend_otp/', {email});
+      await axios.post(`{BASE_URL}/resend_otp/`, {email});
       toast.success('Verification code resent');
     } catch (error) {
       console.error('Error resending verification code:', error);
@@ -54,7 +55,7 @@ const Verification = () => {
     }
     setIsLoading(true);
     try {
-      const response = await axios.post('http://127.0.0.1:8000/verify_code/', { code });
+      const response = await axios.post(`{BASE_URL}/verify_code/`, { code });
       if (response.status === 200) {
         toast.success('Code verified successfully');
         navigate('/login');

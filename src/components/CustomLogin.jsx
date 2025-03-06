@@ -65,15 +65,28 @@ const CustomLogin = () => {
             {loading ? 'Loading...' : 'Continue'}
           </button>
         </form>
-        <p className="login-link">
-          Don't have an account? 
-          <span 
-            className="cursor-pointer hover:underline" 
-            onClick={() => navigate('/signup')}
-          >
-            Sign Up
-          </span>
-        </p>
+        <div className="flex justify-between">
+          <div>
+            <p className="login-link">Don't have an account?</p>
+            <span
+              className="cursor-pointer hover:underline login-link"
+              onClick={() => navigate('/signup')}
+            >
+              SignUp
+            </span>
+          </div>
+
+          <p className="login-link">
+            <span
+              className="cursor-pointer hover:underline"
+              onClick={() => navigate('/reset-password')}
+            >
+              Forgot Password?
+            </span>
+          </p>
+        </div>
+
+        
         <div className="text-center">
           <div className="or-divider">
             <span>OR</span>

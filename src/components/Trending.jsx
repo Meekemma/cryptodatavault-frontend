@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../styles/trending.css'; // Make sure to include this CSS file
 
 const Trending = () => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL;
     const [trends, setTrends] = useState({
         coins: [],
         nfts: [],
@@ -13,7 +14,7 @@ const Trending = () => {
     useEffect(() => {
         const fetchTrends = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/management/trending/');
+                const response = await axios.get(`${BASE_URL}/management/trending/`);
                 setTrends(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
