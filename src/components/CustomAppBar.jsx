@@ -11,12 +11,12 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
+import trexiz from '../assets/images/trexiz.png';
 
 const pages = ['Home', 'Markets', 'About-Us', 'Account-Type', 'Partners', 'Contact'];
-const settings = [ 'Dashboard', 'Logout'];
+const settings = ['Dashboard', 'Logout'];
 
 const pageRoutes = {
   Home: '/',
@@ -25,23 +25,21 @@ const pageRoutes = {
   'Account-Type': '/account-type',
   Partners: '/partners',
   Contact: '/contact',
-  Login: '/login', 
-  Signup: '/signup', 
+  Login: '/login',
+  Signup: '/signup',
 };
 
 const CustomAppBar = () => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const navigate = useNavigate();
-  const location = useLocation(); // To track the current route
+  const location = useLocation();
   const { logoutUser } = useContext(AuthContext);
 
-  // Check if tokens are in localStorage
   const accessToken = localStorage.getItem('access_token');
   const refreshToken = localStorage.getItem('refresh_token');
   const isAuthenticated = accessToken && refreshToken;
 
-  // Get the current page based on the route
   const currentPage = Object.keys(pageRoutes).find(
     (key) => pageRoutes[key] === location.pathname
   );
@@ -67,7 +65,7 @@ const CustomAppBar = () => {
     if (setting.toLowerCase() !== 'logout') {
       navigate(`/${setting.toLowerCase().replace(/ /g, '-')}`);
     } else {
-      logoutUser(); // Trigger logout
+      logoutUser();
     }
   };
 
@@ -79,28 +77,26 @@ const CustomAppBar = () => {
     navigate('/signup');
   };
 
+  const handleLogoClick = () => {
+    navigate('/');
+  };
+
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1D2B53' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 900,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
+          <Box
+            onClick={handleLogoClick}
+            sx={{ cursor: 'pointer', display: { xs: 'none', md: 'flex' }, mr: 2 }}
           >
-            BOBBYGRAM
-          </Typography>
+            <img
+              src={trexiz}
+              alt="Trexiz Logo"
+              style={{
+                height: '110px',
+              }}
+            />
+          </Box>
 
           {/* Mobile Menu */}
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -114,90 +110,84 @@ const CustomAppBar = () => {
             >
               <MenuIcon />
             </IconButton>
-
             <Menu
-  id="menu-appbar"
-  anchorEl={anchorElNav}
-  anchorOrigin={{
-    vertical: 'bottom',
-    horizontal: 'left',
-  }}
-  keepMounted
-  transformOrigin={{
-    vertical: 'top',
-    horizontal: 'left',
-  }}
-  open={Boolean(anchorElNav)}
-  onClose={() => handleCloseNavMenu('')}
-  sx={{
-    display: { xs: 'block', md: 'none' },
-  }}
-  PaperProps={{
-    style: {
-      width: '100%',
-      padding: '2px',
-      backgroundColor: 'rgba(245, 245, 245, 0.95)',
-    },
-  }}
->
-  {pages.map((page) => (
-    <MenuItem
-      key={page}
-      onClick={() => handleCloseNavMenu(page)}
-      sx={{ paddingRight: '40px' }}
-    >
-      <Typography textAlign="center">{page}</Typography>
-    </MenuItem>
-  ))}
-  {/* Add "Login" and "Signup" to the mobile menu */}
-  {!isAuthenticated && [
-    <MenuItem
-      key="Login"
-      onClick={() => handleCloseNavMenu('Login')}
-      sx={{ paddingRight: '40px' }}
-    >
-      <Typography textAlign="center">Login</Typography>
-    </MenuItem>,
-    <MenuItem
-      key="Signup"
-      onClick={() => handleCloseNavMenu('Signup')}
-      sx={{ paddingRight: '40px' }}
-    >
-      <Typography textAlign="center">Signup</Typography>
-    </MenuItem>,
-  ]}
-</Menu>
-
-
+              id="menu-appbar"
+              anchorEl={anchorElNav}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+              open={Boolean(anchorElNav)}
+              onClose={() => handleCloseNavMenu('')}
+              sx={{
+                display: { xs: 'block', md: 'none' },
+              }}
+              PaperProps={{
+                style: {
+                  width: '100%',
+                  padding: '2px',
+                  backgroundColor: 'rgba(245, 245, 245, 0.95)',
+                },
+              }}
+            >
+              {pages.map((page) => (
+                <MenuItem
+                  key={page}
+                  onClick={() => handleCloseNavMenu(page)}
+                  sx={{ paddingRight: '40px' }}
+                >
+                  <Typography textAlign="center">{page}</Typography>
+                </MenuItem>
+              ))}
+              {!isAuthenticated && [
+                <MenuItem
+                  key="Login"
+                  onClick={() => handleCloseNavMenu('Login')}
+                  sx={{ paddingRight: '40px' }}
+                >
+                  <Typography textAlign="center">Login</Typography>
+                </MenuItem>,
+                <MenuItem
+                  key="Signup"
+                  onClick={() => handleCloseNavMenu('Signup')}
+                  sx={{ paddingRight: '40px' }}
+                >
+                  <Typography textAlign="center">Signup</Typography>
+                </MenuItem>,
+              ]}
+            </Menu>
           </Box>
 
           {/* Mobile Logo */}
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
+          <Box
+            onClick={handleLogoClick}
             sx={{
-              mr: 2,
+              cursor: 'pointer',
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              mr: 2,
             }}
           >
-            BOBBYGRAM
-          </Typography>
+            <img
+              src={trexiz}
+              alt="Trexiz Logo"
+              style={{
+                height: '110px',
+              }}
+            />
+          </Box>
 
           {/* Desktop Menu (Centered) */}
           <Box
             sx={{
               flexGrow: 1,
               display: { xs: 'none', md: 'flex' },
-              justifyContent: 'center', // Center the pages
+              justifyContent: 'center',
             }}
           >
             {pages.map((page) => (
@@ -210,7 +200,7 @@ const CustomAppBar = () => {
                   display: 'block',
                   fontWeight: currentPage === page ? 'bold' : 'normal',
                   textDecoration: currentPage === page ? 'underline' : 'none',
-                  textTransform: 'capitalize', // Ensure only the first letter is uppercase
+                  textTransform: 'capitalize',
                 }}
               >
                 {page.toLowerCase()}
@@ -244,7 +234,10 @@ const CustomAppBar = () => {
                   onClose={() => handleCloseUserMenu('')}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={() => handleCloseUserMenu(setting)}>
+                    <MenuItem
+                      key={setting}
+                      onClick={() => handleCloseUserMenu(setting)}
+                    >
                       <Typography textAlign="center">{setting}</Typography>
                     </MenuItem>
                   ))}
@@ -263,8 +256,8 @@ const CustomAppBar = () => {
                     '&:hover': {
                       backgroundColor: '#000',
                       color: 'white',
-                      transform: 'translateY(-3px)', // Move button up slightly
-                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow
+                      transform: 'translateY(-3px)',
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                     },
                   }}
                 >
@@ -280,8 +273,8 @@ const CustomAppBar = () => {
                     '&:hover': {
                       backgroundColor: '#000',
                       color: 'white',
-                      transform: 'translateY(-3px)', // Move button up slightly
-                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Add shadow
+                      transform: 'translateY(-3px)',
+                      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                     },
                   }}
                 >

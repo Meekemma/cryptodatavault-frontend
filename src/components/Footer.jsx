@@ -16,7 +16,7 @@ const Footer = () => {
 
   const resources = [
     { name: "How it works", path: "/how-it-works" },
-    { name: "Why Quicktrade LTD", path: "/why-quicktrade" },
+    { name: "Why Trexiz LTD", path: "/why-quicktrade" },
   ];
 
   const legalInfo = [

@@ -16,13 +16,13 @@ const Why = () => {
       <div className="flex flex-col md:flex-row gap-8">
         <div className="flex-1" data-aos="fade-right">
           <div className="trade">
-            <img src={why} alt="Why QuickTrade" className="w-full h-auto max-w-[400px] mx-auto rounded-lg" />
+            <img src={why} alt="Why Trexiz" className="w-full h-auto max-w-[400px] mx-auto rounded-lg" />
           </div>
         </div>
 
         <div className="flex-1" data-aos="fade-left">
           <h4 className="text-4xl font-extrabold mb-2 md:text-5xl text-[#1D2B53]">Why</h4>
-          <h3 className="text-2xl font-extrabold mb-4 md:text-3xl text-[#1D2B53]">QuickTrade LTD?</h3>
+          <h3 className="text-2xl font-extrabold mb-4 md:text-3xl text-[#1D2B53]">Trexiz LTD?</h3>
 
           <div className="mt-3">
             <h2 className="text-xl font-bold mb-2 text-[#1D2B53]">EXCEPTIONAL CUSTOMER SERVICE</h2>
@@ -35,14 +35,14 @@ const Why = () => {
           <div className="mt-6">
             <h2 className="text-xl font-bold mb-2 text-[#1D2B53]">DIET SPREAD</h2>
             <p>
-              QuickTrade facilitates diet spread, an excellent compass leads to victory. One pipette may change the game. The ultra-thin spread helps traders get their edge in the market.
+              Trexiz LTD facilitates diet spread, an excellent compass leads to victory. One pipette may change the game. The ultra-thin spread helps traders get their edge in the market.
             </p>
           </div>
 
           <div className="mt-6">
             <h2 className="text-xl font-bold mb-2 text-[#1D2B53]">RAPID EXECUTION</h2>
             <p>
-              High volatile markets as CFD require speedy execution to catch the right price. In prevailing market conditions, QuickTrade provides a microsecond order execution model for clients. Low spread and fast execution are great advantages for scalpers and day traders.
+              High volatile markets as CFD require speedy execution to catch the right price. In prevailing market conditions, Trexiz LTD provides a microsecond order execution model for clients. Low spread and fast execution are great advantages for scalpers and day traders.
             </p>
           </div>
         </div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const PrivacyPolicy = () => {
@@ -10,8 +9,8 @@ const PrivacyPolicy = () => {
         Back
       </button>
       <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-      <p><strong>Last Updated:</strong> [Date]</p>
-      <p>Welcome to [Platform Name]! This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our crypto investment platform. By accessing or using our platform, you agree to the terms outlined in this Privacy Policy. If you do not agree with this policy, please do not use our platform.</p>
+      <p><strong>Last Updated:</strong> May 1, 2025</p>
+      <p>Welcome to Trexiz! This Privacy Policy explains how we collect, use, disclose, and protect your personal information when you use our crypto investment platform. By accessing or using our platform, you agree to the terms outlined in this Privacy Policy. If you do not agree with this policy, please do not use our platform.</p>
       
       <h2 className="text-2xl font-bold mt-6">1. Information We Collect</h2>
       <ul className="list-disc pl-6">
@@ -64,7 +63,7 @@ const PrivacyPolicy = () => {
         <li><strong>Deletion:</strong> Users can request the deletion of their personal data, subject to legal and regulatory obligations.</li>
         <li><strong>Opt-Out:</strong> Users can opt out of marketing communications at any time.</li>
         <li><strong>Data Portability:</strong> Users can request a copy of their data in a machine-readable format.</li>
-        <li>To exercise these rights, please contact us at [Support Email].</li>
+        <li>To exercise these rights, please contact us at support@trexiz.com.</li>
       </ul>
       
       <h2 className="text-2xl font-bold mt-6">7. Data Retention</h2>
@@ -93,7 +92,7 @@ const PrivacyPolicy = () => {
       </ul>
       
       <h2 className="text-2xl font-bold mt-6">12. Contact Information</h2>
-      <p>If you have any questions or concerns about this Privacy Policy, please contact us at [Support Email].</p>
+      <p>If you have any questions or concerns about this Privacy Policy, please contact us at support@trexiz.com.</p>
     </div>
   );
 };

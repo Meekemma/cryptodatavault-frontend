@@ -33,7 +33,7 @@ const CustomPartner = () => {
               Introducing Broker is a partnership program where you can grow your business and earn high rebates as your network expands and your trading volume increases.
             </h5>
             <p className="text-lg">
-              Introduce new traders to QuickTrade LTD Trade, 
+              Introduce new traders to Trexiz LTD Trade, 
               build your network as a professional trader and grow your circle with our partnership program. 
               IB program offers an attractive side business to your already successful trading. 
               It means generating extra revenue!
@@ -55,7 +55,7 @@ const CustomPartner = () => {
               Satisfied with our service? Tell your friends!
               Once your friends start trading, you will start earning commissions! 
               Bring more friends, earn more commissions! Refer a Friend program is available to all clients! 
-              Send your friend a request to join us via QuickTrade LTD Trade page. 
+              Send your friend a request to join us via Trexiz LTD Trade page. 
               Alternatively, you can notify an Account Manager directly by e-mailing us at support@safefxside.com
             </p>
             <button className="create-account-button">Register now</button>
@@ -94,7 +94,7 @@ const CustomPartner = () => {
             </h5>
             <p className="text-lg">
               You can withdraw your IB commission anytime you want by filling in a withdrawal form from the ClientArea.
-              You can transfer the funds to your QuickTrade LTD Trade live account or withdraw them to your bank account or any other available option.
+              You can transfer the funds to your Trexiz LTD Trade live account or withdraw them to your bank account or any other available option.
             </p>
             <button className="create-account-button">Register now</button>
           </div>

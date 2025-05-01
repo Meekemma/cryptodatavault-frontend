@@ -18,7 +18,7 @@ const PageNotFound = () => {
         <p className="text-xl mb-5">This page does not exist</p>
         <button
           onClick={handleGoBack}
-          className="text-white create-account-button hover:bg-indigo-900 rounded-md px-3 py-2 mt-4"
+          className="text-white create-account-button bg-indigo-900 hover:bg-red-700 rounded-md px-3 py-2 mt-4"
         >
           Go Back
         </button>
