@@ -28,7 +28,7 @@ const DashBoardFooter = () => {
     <div
       className={`footer ${isFooterFixed ? 'fixed bottom-0 left-0 w-full text-center text-[#1D2B53] border-t border-gray-700 bg-white py-2' : 'static mt-auto w-full text-center text-[#1D2B53] border-t border-gray-700 bg-white py-2'}`}
     >
-      <p className="text-sm">© {new Date().getFullYear()} BOBBYGRAM. All Rights Reserved.</p>
+      <p className="text-sm">© {new Date().getFullYear()} Trexiz LTD. All Rights Reserved.</p>
     </div>
   );
 };

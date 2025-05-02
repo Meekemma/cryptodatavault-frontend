@@ -15,7 +15,7 @@ const carouselItems = [
   },
   {
     imgSrc: pana,
-    text: 'Trade Bitcoin/Ethereum DeFi Token with BobbyGram',
+    text: 'Trade Bitcoin/Ethereum DeFi Token with Trexiz LTD',
     button1Text: 'Trade Now',
   },
   {

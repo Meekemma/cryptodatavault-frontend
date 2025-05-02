@@ -3,7 +3,8 @@ import { Grid, Card, CardContent, Typography, Box, Divider, Button } from '@mui/
 import '../styles/CustomCarousel.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
+import AuthContext from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const cardItems = [
   {
@@ -39,6 +40,17 @@ const cardItems = [
 ];
 
 const TradePlan = () => {
+    const { user } = useContext(AuthContext); 
+    const navigate = useNavigate(); 
+
+    const handleOnClick = () =>{
+        if(user){
+            navigate('/deposit')
+        }else{
+            navigate('/signup')
+        }
+    }
+    
 
     useEffect(() => {
       AOS.init({ duration: 1000,once: true, });
@@ -84,7 +96,7 @@ const TradePlan = () => {
                 </Box>
                 <Divider sx={{ my: 2, bgcolor: 'white' }} />
                 <Box sx={{ textAlign: 'center' }}>
-                  <Button variant="contained" color="secondary">
+                  <Button variant="contained" color="secondary" className='cursor-pointer' onClick={handleOnClick}>
                     Get Now
                   </Button>
                 </Box>

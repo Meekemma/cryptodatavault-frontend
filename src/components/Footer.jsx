@@ -95,7 +95,7 @@ const Footer = () => {
       </div>
 
       <div className="bottom-0 w-full py-4 text-center">
-        <p className="text-sm">© {new Date().getFullYear()} BOBBYGRAM. All rights reserved.</p>
+        <p className="text-sm">© {new Date().getFullYear()} Trexiz LTD. All rights reserved.</p>
       </div>
     </footer>
   );
