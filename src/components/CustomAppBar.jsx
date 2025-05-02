@@ -40,6 +40,9 @@ const CustomAppBar = () => {
   const refreshToken = localStorage.getItem('refresh_token');
   const isAuthenticated = accessToken && refreshToken;
 
+  const userDats = JSON.parse(localStorage.getItem('user'));
+  const userInitial = userDats?.names?.charAt(0).toUpperCase() || '';
+
   const currentPage = Object.keys(pageRoutes).find(
     (key) => pageRoutes[key] === location.pathname
   );
@@ -214,7 +217,7 @@ const CustomAppBar = () => {
               <>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  <Avatar sx={{ bgcolor: '#000', color: '#fff' }}>{userInitial}</Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu
