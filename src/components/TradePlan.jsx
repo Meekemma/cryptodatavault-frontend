@@ -1,4 +1,4 @@
-import React, { useEffect  } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Grid, Card, CardContent, Typography, Box, Divider, Button } from '@mui/material';
 import '../styles/CustomCarousel.css';
 import AOS from 'aos';
