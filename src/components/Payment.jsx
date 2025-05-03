@@ -27,6 +27,13 @@ const Payment = () => {
         { value: 'advanced', label: 'Advance Plan' }
     ];
 
+    const currencies = [
+        { value: 'BTC', label: 'BTC' },
+        { value: 'XRP', label: 'XRP' },
+        { value: 'USDT', label: 'USDT' },
+        { value: 'USD', label: 'USD' },
+    ];
+
     const handleChange = (e) => {
         const { id, value } = e.target;
         setFormData(prevState => ({
@@ -109,14 +116,18 @@ const Payment = () => {
                         </div>
                         <div>
                             <label htmlFor="currency" className="block font-semibold mb-2">Currency:</label>
-                            <input
-                                type="text"
+                            <select
                                 id="currency"
                                 value={formData.currency}
                                 onChange={handleChange}
                                 required
                                 className="w-full p-2 border border-gray-300 rounded-lg"
-                            />
+                            >
+                                <option value="">Choose currency</option>
+                                {currencies.map((currency) => (
+                                    <option key={currency.value} value={currency.value}>{currency.label}</option>
+                                ))}
+                            </select>
                         </div>
                         <button
                             type="submit"
