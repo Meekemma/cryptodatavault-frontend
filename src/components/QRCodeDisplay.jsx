@@ -96,7 +96,12 @@ const QRCodeDisplay = () => {
                         <p className="mt-2 text-gray-700">Scan to complete your payment</p>
 
                         <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
-                            <p className="text-gray-700 break-all">{walletAddress}</p>
+                            <p
+                                className="text-gray-700 break-words text-wrap max-w-[256px]"
+                                style={{ overflowWrap: 'break-word' }}
+                            >
+                                {walletAddress}
+                            </p>
                             <button
                                 onClick={() => {
                                     navigator.clipboard.writeText(walletAddress);
