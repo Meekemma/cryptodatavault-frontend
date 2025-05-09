@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import DashBoardFooter from './DashBoardFooter';
 import { ClipLoader } from 'react-spinners';
-import { QRCodeCanvas } from 'qrcode.react'; // Use QRCodeCanvas or QRCodeSVG
+import { QRCodeCanvas } from 'qrcode.react';
 import { FiCopy, FiShare2 } from 'react-icons/fi';
 
 const QRCodeDisplay = () => {
@@ -13,7 +13,7 @@ const QRCodeDisplay = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const currency = localStorage.getItem('currency');
+        const currency = localStorage.getItem('selectedCurrency'); // Changed from 'currency' to 'selectedCurrency'
 
         if (!currency) {
             setError("No currency selected. Please go back and choose a currency.");
@@ -57,7 +57,7 @@ const QRCodeDisplay = () => {
                     <p className="text-red-500">{error}</p>
                 ) : (
                     <div className="p-4 bg-white shadow-md rounded-lg text-center">
-                        <QRCodeCanvas value={walletAddress} size={256} /> {/* Updated to QRCodeCanvas */}
+                        <QRCodeCanvas value={walletAddress} size={256} />
                         <p className="mt-2 text-gray-700">Scan to complete your payment</p>
 
                         <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
