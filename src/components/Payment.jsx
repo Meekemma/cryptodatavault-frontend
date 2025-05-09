@@ -49,6 +49,9 @@ const Payment = () => {
         try {
             const formattedAmount = parseFloat(formData.amount_paid).toFixed(8);
 
+            // Save selected currency to localStorage
+            localStorage.setItem("selectedCurrency", formData.currency);
+
             await axiosInstance.post('/payment/create_payment/', {
                 ...formData,
                 amount_paid: formattedAmount

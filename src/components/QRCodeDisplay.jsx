@@ -1,46 +1,50 @@
 import React, { useEffect, useState } from 'react';
-import axiosInstance from '../utils/axiosInstance';
 import DashBoardFooter from './DashBoardFooter';
 import { ClipLoader } from 'react-spinners';
+import { QRCodeCanvas } from 'qrcode.react'; // Use QRCodeCanvas or QRCodeSVG
+import { FiCopy, FiShare2 } from 'react-icons/fi';
 
 const QRCodeDisplay = () => {
-    const [qrCode, setQrCode] = useState('');
+    const [walletAddress, setWalletAddress] = useState('');
     const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
     const [processing, setProcessing] = useState(false);
-    const [showProceed, setShowProceed] = useState(false); // State to control button visibility
+    const [showProceed, setShowProceed] = useState(false);
+    const [copied, setCopied] = useState(false);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        const fetchQRCode = async () => {
-            try {
-                const response = await axiosInstance.get("/payment/qr-code/", {
-                    responseType: "blob",
-                });
+        const currency = localStorage.getItem('currency');
 
-                const imageUrl = URL.createObjectURL(response.data);
-                setQrCode(imageUrl); 
-            } catch (err) {
-                setError('Failed to load QR Code. Please try again.');
-            } finally {
-                setIsLoading(false);
-            }
-        };
+        if (!currency) {
+            setError("No currency selected. Please go back and choose a currency.");
+            setIsLoading(false);
+            return;
+        }
 
-        fetchQRCode();
+        let address = '';
+        if (currency === 'BTC') {
+            address = 'bc1qj38z8sml7cwsgts67702y2l0sym86sxxxkddcf';
+        } else if (currency === 'USDT') {
+            address = '0x7D644b0B54B3Fce2f5D11cC5e31F2C93eD63570D';
+        } else {
+            address = 'COMING_SOON';
+        }
 
-        // Show "Proceed" button after 60 seconds
+        setWalletAddress(address);
+        setIsLoading(false);
+
         const proceedTimer = setTimeout(() => {
             setShowProceed(true);
         }, 60000);
 
-        return () => clearTimeout(proceedTimer); // Cleanup timer
+        return () => clearTimeout(proceedTimer);
     }, []);
 
     const handleProceedToProcessing = () => {
         setProcessing(true);
         setTimeout(() => {
             setProcessing(false);
-            window.location.href = '/transactions'; // Redirect after 10 sec
+            window.location.href = '/transactions';
         }, 10000);
     };
 
@@ -53,10 +57,41 @@ const QRCodeDisplay = () => {
                     <p className="text-red-500">{error}</p>
                 ) : (
                     <div className="p-4 bg-white shadow-md rounded-lg text-center">
-                        <img src={qrCode} alt="QR Code" className="w-64 h-64" />
+                        <QRCodeCanvas value={walletAddress} size={256} /> {/* Updated to QRCodeCanvas */}
                         <p className="mt-2 text-gray-700">Scan to complete your payment</p>
 
-                        {/* Show button only after 60 seconds */}
+                        <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
+                            <p className="text-gray-700 break-all">{walletAddress}</p>
+                            <button
+                                onClick={() => {
+                                    navigator.clipboard.writeText(walletAddress);
+                                    setCopied(true);
+                                    setTimeout(() => setCopied(false), 2000);
+                                }}
+                                className="text-gray-500 hover:text-[#1D2B53] transition"
+                                title="Copy address"
+                            >
+                                <FiCopy size={18} />
+                            </button>
+                            <button
+                                onClick={() => {
+                                    if (navigator.share) {
+                                        navigator.share({
+                                            title: 'Payment Address',
+                                            text: `Here is the payment address: ${walletAddress}`,
+                                        });
+                                    } else {
+                                        alert('Sharing not supported on this browser.');
+                                    }
+                                }}
+                                className="text-gray-500 hover:text-[#1D2B53] transition"
+                                title="Share address"
+                            >
+                                <FiShare2 size={18} />
+                            </button>
+                            {copied && <span className="text-sm text-green-600 ml-2">Copied!</span>}
+                        </div>
+
                         {showProceed && (
                             <button
                                 onClick={handleProceedToProcessing}
@@ -69,7 +104,6 @@ const QRCodeDisplay = () => {
                 )}
             </div>
 
-            {/* Overlay when processing */}
             {processing && (
                 <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
                     <div className="bg-white p-6 rounded-lg shadow-lg text-center">
