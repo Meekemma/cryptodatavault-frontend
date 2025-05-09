@@ -95,41 +95,43 @@ const QRCodeDisplay = () => {
                         <QRCodeCanvas value={walletAddress} size={256} />
                         <p className="mt-2 text-gray-700">Scan to complete your payment</p>
 
-                        <div className="mt-2 flex items-center justify-center gap-2 flex-wrap">
+                        <div className="mt-2 flex flex-col items-center gap-2">
                             <p
                                 className="text-gray-700 break-words text-wrap max-w-[256px]"
                                 style={{ overflowWrap: 'break-word' }}
                             >
                                 {walletAddress}
                             </p>
-                            <button
-                                onClick={() => {
-                                    navigator.clipboard.writeText(walletAddress);
-                                    setCopied(true);
-                                    setTimeout(() => setCopied(false), 2000);
-                                }}
-                                className="text-gray-500 hover:text-[#1D2B53] transition"
-                                title="Copy address"
-                            >
-                                <FiCopy size={18} />
-                            </button>
-                            <button
-                                onClick={() => {
-                                    if (navigator.share) {
-                                        navigator.share({
-                                            title: 'Payment Address',
-                                            text: `Here is the payment address: ${walletAddress}`,
-                                        });
-                                    } else {
-                                        alert('Sharing not supported on this browser.');
-                                    }
-                                }}
-                                className="text-gray-500 hover:text-[#1D2B53] transition"
-                                title="Share address"
-                            >
-                                <FiShare2 size={18} />
-                            </button>
-                            {copied && <span className="text-sm text-green-600 ml-2">Copied!</span>}
+                            <div className="flex items-center gap-2">
+                                <button
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(walletAddress);
+                                        setCopied(true);
+                                        setTimeout(() => setCopied(false), 2000);
+                                    }}
+                                    className="text-gray-500 hover:text-[#1D2B53] transition"
+                                    title="Copy address"
+                                >
+                                    <FiCopy size={18} />
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        if (navigator.share) {
+                                            navigator.share({
+                                                title: 'Payment Address',
+                                                text: `Here is the payment address: ${walletAddress}`,
+                                            });
+                                        } else {
+                                            alert('Sharing not supported on this browser.');
+                                        }
+                                    }}
+                                    className="text-gray-500 hover:text-[#1D2B53] transition"
+                                    title="Share address"
+                                >
+                                    <FiShare2 size={18} />
+                                </button>
+                                {copied && <span className="text-sm text-green-600">Copied!</span>}
+                            </div>
                         </div>
 
                         {showProceed && (
