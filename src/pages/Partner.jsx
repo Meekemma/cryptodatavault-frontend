@@ -5,6 +5,7 @@ const partner = () => {
   return (
     
     <CustomPartner/>
+    
    
 
   )

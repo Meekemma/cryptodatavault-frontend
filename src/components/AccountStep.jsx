@@ -9,7 +9,7 @@ const AccountStep = () => {
   };
 
   return (
-    <div className='bg-[#1D2B53] my-5 py-10'>
+    <div className='bg-[#1D2B53] my-5 py-10' id='how-it-works'>
       <div className="container mx-auto px-4">
         <div className='text-center'>
           <h1 className='font-bold text-3xl md:text-5xl my-2 text-white'>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import coingecko from '../assets/images/coingecko.svg';
@@ -11,9 +11,11 @@ const Why = () => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
+  
+
   return (
     <div className="container mx-auto px-4 my-8">
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8" id="why-trexix">
         <div className="flex-1" data-aos="fade-right">
           <div className="trade">
             <img src={why} alt="Why Trexiz" className="w-full h-auto max-w-[400px] mx-auto rounded-lg" />

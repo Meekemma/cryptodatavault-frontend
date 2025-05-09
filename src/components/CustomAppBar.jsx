@@ -142,7 +142,7 @@ const CustomAppBar = () => {
                 <MenuItem
                   key={page}
                   onClick={() => handleCloseNavMenu(page)}
-                  sx={{ paddingRight: '40px' }}
+                  sx={{ paddingRight: '40px'}}
                 >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>

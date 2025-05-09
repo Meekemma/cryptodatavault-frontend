@@ -15,9 +15,10 @@ const Footer = () => {
   ];
 
   const resources = [
-    { name: "How it works", path: "/how-it-works" },
-    { name: "Why Trexiz LTD", path: "/why-quicktrade" },
-  ];
+  { name: "How it works", path: "#how-it-works" },
+  { name: "Why Trexix LTD", path: "#why-trexix" },
+];
+
 
   const legalInfo = [
     { name: "Terms & Condition", path: "/terms-condition" },
@@ -64,7 +65,20 @@ const Footer = () => {
               {resources.map((item, index) => (
                 <li key={index}>
                   <button 
-                    onClick={() => navigate(item.path)} 
+                 onClick={() => {
+                  // If we're already on the homepage, scroll smoothly to the section
+                  if (window.location.pathname === "/") {
+                    const el = document.querySelector(item.path);
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  } else {
+                    // If not, navigate to the homepage with the hash
+                    window.location.href = `/${item.path}`;
+                  }
+                }}
+
+
+
+ 
                     className="hover:underline cursor-pointer"
                   >
                     {item.name}

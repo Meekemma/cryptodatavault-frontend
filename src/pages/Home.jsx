@@ -1,4 +1,5 @@
-import React from 'react';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import CustomAppBar from '../components/CustomAppBar';
 import CustomCarousel from '../components/CustomCarousel';
 import CustomCards from '../components/CustomCards';
@@ -11,6 +12,18 @@ import AccountStep from '../components/AccountStep';
 
 
 const Home = () => {
+   const location = useLocation();
+  
+    useEffect(() => {
+      if (location.hash) {
+        const el = document.querySelector(location.hash);
+        if (el) {
+          setTimeout(() => {
+            el.scrollIntoView({ behavior: "smooth" });
+          }, 100); // slight delay ensures DOM is ready
+        }
+      }
+    }, [location]);
   return (
     <>
       <CryptoContextProvider>
