@@ -3,6 +3,9 @@ import TradePlan from './TradePlan';
 import '../styles/CustomCarousel.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
+import { toast } from 'react-toastify';
 
 // Crypto icons
 import tether from '../assets/images/tether.svg';
@@ -26,6 +29,17 @@ import CryptoContext from '../context/CryptoContext';
 
 const Trade = () => {
     const { markets } = useContext(CryptoContext);
+    const { user } = useContext(AuthContext); 
+    const navigate = useNavigate();
+
+    const handleOnClick = () =>{
+        if(user){
+            toast.error("You already have an account");
+        }else{
+            navigate('/signup')
+        }
+    }
+
 
     // Initialize AOS (Animate On Scroll) library
     useEffect(() => {
@@ -115,7 +129,7 @@ const Trade = () => {
 
                     {/* Create Account Button */}
                     <div className="mt-6">
-                        <button className="create-button">Create Account</button>
+                        <button className="create-button" onClick={handleOnClick}>Create Account</button>
                     </div>
                 </div>
             </div>
