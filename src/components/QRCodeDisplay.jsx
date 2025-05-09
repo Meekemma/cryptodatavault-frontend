@@ -13,21 +13,56 @@ const QRCodeDisplay = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const currency = localStorage.getItem('selectedCurrency'); // Changed from 'currency' to 'selectedCurrency'
+        // Retrieve and parse currency data from localStorage
+        const currencyData = localStorage.getItem('selectedCurrency');
+        let currency = null;
+
+        if (currencyData) {
+            try {
+                const parsedData = JSON.parse(currencyData);
+                // Check if the currency data is still valid (not expired)
+                if (parsedData.expiresAt && parsedData.expiresAt > Date.now()) {
+                    currency = parsedData.value;
+                } else {
+                    // Remove expired currency data
+                    localStorage.removeItem('selectedCurrency');
+                    setError('Currency selection has expired. Please select a currency again.');
+                    setIsLoading(false);
+                    return;
+                }
+            } catch (e) {
+                console.error('Error parsing currency data:', e);
+                localStorage.removeItem('selectedCurrency');
+                setError('Invalid currency data. Please select a currency again.');
+                setIsLoading(false);
+                return;
+            }
+        }
 
         if (!currency) {
-            setError("No currency selected. Please go back and choose a currency.");
+            setError('No currency selected. Please go back and choose a currency.');
             setIsLoading(false);
             return;
         }
 
         let address = '';
-        if (currency === 'BTC') {
-            address = 'bc1qj38z8sml7cwsgts67702y2l0sym86sxxxkddcf';
-        } else if (currency === 'USDT') {
-            address = '0x7D644b0B54B3Fce2f5D11cC5e31F2C93eD63570D';
-        } else {
-            address = 'COMING_SOON';
+        switch (currency) {
+            case 'BTC':
+                address = 'bc1qj38z8sml7cwsgts67702y2l0sym86sxxxkddcf';
+                break;
+            case 'USDT':
+                address = '0x7D644b0B54B3Fce2f5D11cC5e31F2C93eD63570D';
+                break;
+            case 'XRP':
+                address = 'rHb9CJAWyB4rj91VRWn96DkukG4bwdtyTh';
+                break;
+            case 'USD':
+                address = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48';
+                break;
+            default:
+                setError('Unsupported currency selected. Please choose a valid currency.');
+                setIsLoading(false);
+                return;
         }
 
         setWalletAddress(address);
