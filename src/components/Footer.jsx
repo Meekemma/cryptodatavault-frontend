@@ -16,7 +16,7 @@ const Footer = () => {
 
   const resources = [
   { name: "How it works", path: "#how-it-works" },
-  { name: "Why Trexix LTD", path: "#why-trexix" },
+  { name: "Why Trexiz LTD", path: "#why-trexix" },
 ];
 
 
