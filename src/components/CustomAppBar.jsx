@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import trexiz from '../assets/images/trexiz.png';
+import GoogleTranslate from './GoogleTranslate';
 
 const pages = ['Home', 'Markets', 'About-Us', 'Account-Type', 'Partners', 'Contact'];
 const settings = ['Dashboard', 'Logout'];
@@ -88,17 +89,27 @@ const CustomAppBar = () => {
     <AppBar position="static" sx={{ backgroundColor: '#1D2B53' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Desktop Logo and Google Translate */}
           <Box
-            onClick={handleLogoClick}
-            sx={{ cursor: 'pointer', display: { xs: 'none', md: 'flex' }, mr: 2 }}
+            sx={{
+              display: { xs: 'none', md: 'flex' },
+              alignItems: 'center',
+              mr: 2,
+            }}
           >
-            <img
-              src={trexiz}
-              alt="Trexiz Logo"
-              style={{
-                height: '110px',
-              }}
-            />
+            <Box
+              onClick={handleLogoClick}
+              sx={{ cursor: 'pointer' }}
+            >
+              <img
+                src={trexiz}
+                alt="Trexiz Logo"
+                style={{
+                  height: '110px',
+                }}
+              />
+            </Box>
+            <GoogleTranslate />
           </Box>
 
           {/* Mobile Menu */}
@@ -142,7 +153,7 @@ const CustomAppBar = () => {
                 <MenuItem
                   key={page}
                   onClick={() => handleCloseNavMenu(page)}
-                  sx={{ paddingRight: '40px'}}
+                  sx={{ paddingRight: '40px' }}
                 >
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
@@ -180,10 +191,13 @@ const CustomAppBar = () => {
               src={trexiz}
               alt="Trexiz Logo"
               style={{
-                height: '110px',
+                height: '100px',
               }}
             />
+            
           </Box>
+          
+          
 
           {/* Desktop Menu (Centered) */}
           <Box
@@ -217,7 +231,7 @@ const CustomAppBar = () => {
               <>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar sx={{ bgcolor: '#000', color: '#fff' }}>{userInitial}</Avatar>
+                    <Avatar sx={{ bgcolor: '#000', color: '#fff' }}>{userInitial}</Avatar>
                   </IconButton>
                 </Tooltip>
                 <Menu
