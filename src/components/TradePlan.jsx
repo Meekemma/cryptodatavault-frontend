@@ -43,35 +43,38 @@ const TradePlan = () => {
     const { user } = useContext(AuthContext); 
     const navigate = useNavigate(); 
 
-    const handleOnClick = () =>{
-        if(user){
-            navigate('/deposit')
-        }else{
-            navigate('/signup')
+    const handleOnClick = () => {
+        if (user) {
+            navigate('/deposit');
+        } else {
+            navigate('/signup');
         }
-    }
-    
+    };
 
     useEffect(() => {
-      AOS.init({ duration: 1000,once: true, });
+      AOS.init({ duration: 1000, once: true });
     }, []);
 
   return (
-    <div className="container mx-auto px-4 my-8" data-aos="fade-up">
-      <Grid container spacing={4}>
+    <div className="container mx-auto px-1 sm:px-4 my-8" data-aos="fade-up">
+      <Grid container spacing={1} justifyContent="center">
         {cardItems.map((item, index) => (
           <Grid item xs={12} sm={6} md={4} key={index}>
             <Card
-            className="card"
+              className="card"
               sx={{
-                py: { xs: 2, sm: 3, md: 4 },
-                bgcolor: '#1D2B53', // Set the card background color
-                color: 'white', // Set the card text color
+                py: { xs: 1, sm: 3, md: 4 },
+                px: { xs: 0.75, sm: 2 },
+                bgcolor: '#1D2B53',
+                color: 'white',
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
-                borderRadius: '16px', // Add border radius
+                borderRadius: '16px',
+                minWidth: { xs: '95%', sm: 'auto' },
+                maxWidth: { xs: '98%', sm: '100%' },
+                mx: 'auto',
               }}
             >
               <CardContent>
@@ -79,7 +82,16 @@ const TradePlan = () => {
                   <Typography variant="h5" component="div" sx={{ fontWeight: 'bold' }}>
                     {item.title}
                   </Typography>
-                  <Typography variant="h4" component="div" sx={{ fontWeight: 'bold', mt: 2 }}>
+                  <Typography
+                    variant="h4"
+                    component="div"
+                    sx={{
+                      fontWeight: 'bold',
+                      mt: 2,
+                      whiteSpace: 'nowrap',
+                      fontSize: { xs: '1.5rem', sm: '2rem' },
+                    }}
+                  >
                     {item.price}
                   </Typography>
                   <Typography variant="body1" sx={{ mt: 2 }}>
@@ -96,7 +108,12 @@ const TradePlan = () => {
                 </Box>
                 <Divider sx={{ my: 2, bgcolor: 'white' }} />
                 <Box sx={{ textAlign: 'center' }}>
-                  <Button variant="contained" color="secondary" className='cursor-pointer' onClick={handleOnClick}>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    className="cursor-pointer"
+                    onClick={handleOnClick}
+                  >
                     Get Now
                   </Button>
                 </Box>
