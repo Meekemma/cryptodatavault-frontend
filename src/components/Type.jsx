@@ -31,7 +31,7 @@ const TradingTable = () => {
     { noHeader: 'Account Currency', column1: 'USD', column2: 'USD', column3: 'USD' },
     { noHeader: 'Leverage', column1: 'From 1:10 to 1:500', column2: 'From 1:10 to 1:500', column3: 'From 1:10 to 1:500' },
     { noHeader: 'Maximum Deposit', column1: 'No Limit', column2: 'No Limit', column3: 'No Limit' },
-    { noHeader: 'Minimum Deposit', column1: '$100', column2: '$500', column3: '$5000' },
+    { noHeader: 'Minimum Deposit', column1: '$200', column2: '$1000', column3: '$5000' },
     { noHeader: 'Order Execution', column1: 'Market', column2: 'Market', column3: 'Market' },
     { noHeader: 'Spread from', column1: '1.5', column2: '1.2', column3: 'RAW' },
     { noHeader: 'Margin Call', column1: '50%', column2: '50%', column3: '50%' },
@@ -79,7 +79,7 @@ const TradingTable = () => {
               <th className="px-6 py-4"></th> {/* Increased padding */}
               <th className="px-6 py-4 bg-[#BA0021] text-white">STARTER</th> {/* Increased padding */}
               <th className="px-6 py-4 bg-[#355e3b] text-white">STANDARD</th>
-              <th className="px-6 py-4 bg-[#0C0404] text-white">ECN</th>
+              <th className="px-6 py-4 bg-[#0C0404] text-white">ADVANCE</th>
             </tr>
           </thead>
           <tbody>

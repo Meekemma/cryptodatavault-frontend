@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 const cardItems = [
   {
     title: 'STARTER',
-    price: '$500',
+    price: '$500 - $2000',
     text1: 'Minimum Deposit',
     details: [
       'Fx from 1.8* pips & Crypto 1% *',
@@ -19,7 +19,7 @@ const cardItems = [
   },
   {
     title: 'STANDARD',
-    price: '$3000',
+    price: '$3000 - $9000',
     text1: 'Minimum Deposit',
     details: [
       'Fx from 1.2* pips & Crypto 0.8% *',
@@ -28,8 +28,8 @@ const cardItems = [
     ]
   },
   {
-    title: 'STARTECNER',
-    price: '$10,000',
+    title: 'ADVANCE',
+    price: '$10,000 - $50,000',
     text1: 'Minimum Deposit',
     details: [
       'Fx from 0.2* pips + 6$* on major',
