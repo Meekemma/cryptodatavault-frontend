@@ -52,7 +52,7 @@ const Trade = () => {
             <div className="flex justify-center">
                 <div className="text-center markets" data-aos="fade-up">
                     <h3 className="text-3xl font-extrabold md:text-balance">
-                        Trade the world’s market with Trexiz LTD LTD
+                        Trade the world’s market with Trexiz LTD
                     </h3>
                     <p className="mt-2">
                         We offer 300+ instruments under 7 asset classes of world-renowned markets.
