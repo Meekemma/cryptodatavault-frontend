@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import '../styles/CustomCarousel.css';
 import { toast, ToastContainer } from 'react-toastify';
 import axios from 'axios';
-import 'react-toastify/dist/ReactToastify.css'; 
+import 'react-toastify/dist/ReactToastify.css';
 
 const Subscription = () => {
   const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -22,20 +22,34 @@ const Subscription = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
-      const res = await axios.post(`{BASE_URL}/email-subscription/`, formData);
+      const res = await axios.post(`${BASE_URL}/email-subscription/`, formData);
       if (res.status === 200) {
         toast.success('Successfully subscribed to the newsletter');
-        setFormData({ email: '' }); // Reset the form to initial state
+        setFormData({ email: '' });
       }
     } catch (error) {
-      if (error.response) {
-        console.error(error.response.data); // Log the detailed error response
-        const errorMessage = error.response.data.email?.[0] || 'Subscription failed. Please try again.';
-        toast.error(errorMessage);
-      } else {
-        toast.error('An error occurred. Please try again.');
+      let message = 'Subscription failed. Please try again.';
+
+      if (error.response?.data) {
+        const data = error.response.data;
+        if (data.message) {
+          message = data.message;
+        } else if (data.detail) {
+          message = data.detail;
+        } else if (data.email && Array.isArray(data.email)) {
+          message = data.email[0];
+        } else if (typeof data === 'string') {
+          message = data;
+        } else if (typeof data === 'object') {
+          const firstError = Object.values(data)[0];
+          message = Array.isArray(firstError) ? firstError[0] : firstError;
+        }
       }
+
+      console.error('Subscription error:', error.response?.data || error);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
@@ -48,7 +62,10 @@ const Subscription = () => {
         <h2 className="subscription-title text-2xl font-bold text-center mb-4">
           Subscribe to our Newsletter
         </h2>
-        <form className="subscription-form flex flex-col md:flex-row gap-4 max-w-lg mx-auto" onSubmit={handleSubmit}>
+        <form
+          className="subscription-form flex flex-col md:flex-row gap-4 max-w-lg mx-auto"
+          onSubmit={handleSubmit}
+        >
           <input
             type="email"
             className="subscription-input flex-grow p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
