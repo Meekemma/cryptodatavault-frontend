@@ -1,9 +1,21 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const Translate = () => {
+  const location = useLocation();
+
   useEffect(() => {
-    // Prevent multiple initializations
-    if (window.googleTranslateInitialized) return;
+    // Clear existing widget to prevent duplicates
+    const translateElement = document.getElementById('google_translate_element');
+    if (translateElement) {
+      translateElement.innerHTML = ''; // Clear previous content
+    }
+
+    // Prevent multiple script initializations
+    if (window.googleTranslateInitialized && window.google && window.google.translate) {
+      window.googleTranslateElementInit();
+      return;
+    }
 
     window.googleTranslateInitialized = true;
 
@@ -24,24 +36,21 @@ const Translate = () => {
       const script = document.createElement('script');
       script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
       script.async = true;
+      script.onerror = () => console.error('Failed to load Google Translate script');
       document.body.appendChild(script);
     } else if (window.google && window.google.translate) {
-      // If script exists and google object is ready, initialize manually
       window.googleTranslateElementInit();
     }
-  }, []);
 
-  return (
-    <div
-      id="google_translate_element"
-      style={{
-        minWidth: '150px',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    />
-  );
+    // Cleanup on unmount
+    return () => {
+      if (translateElement) {
+        translateElement.innerHTML = '';
+      }
+    };
+  }, [location.pathname]);
+
+  return <div id="google_translate_element" />;
 };
 
 export default Translate;

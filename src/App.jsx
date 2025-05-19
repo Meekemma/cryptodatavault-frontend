@@ -33,7 +33,8 @@ import TermsConditions from './components/TermsConditions';
 import ScrollToTop from './components/ScrollToTop';
 import Qrcode from './pages/Qrcode';
 import CustomResetPasswordConfirm from './components/CustomResetPasswordConfirm';
-// import Translate from './components/Translate';
+import Translate from './components/Translate';
+import './styles/Translate.css'; 
 
 
 const App = () => {
@@ -75,7 +76,7 @@ const App = () => {
           <Route path="/profile" element={<PrivateRoute><Side /></PrivateRoute>} />
 
         </Routes>
-        {/* <Translate /> */}
+        <Translate />
         <ScrollToTop />
         <ToastContainer />
         <CookieConsent />

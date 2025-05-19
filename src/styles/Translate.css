@@ -1,0 +1,30 @@
+#google_translate_element {
+  min-width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 9999;
+  transform: scale(0.9);
+  overflow: visible;
+}
+
+@media (max-width: 768px) {
+  #google_translate_element {
+    transform: scale(0.7);
+    top: 8px;
+    right: 8px;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  #google_translate_element {
+    transform: scale(0.6);
+    top: 5px;
+    right: 5px;
+    min-width: 80px;
+  }
+}
