@@ -42,7 +42,7 @@ const CustomResetPasswordConfirm = () => {
 
     try {
       const res = await axios.post(
-        `${BASE_URL}/base/password_reset/confirm/`,
+        `${BASE_URL}/api/password_reset/confirm/`,
         { password, token }
       );
 
