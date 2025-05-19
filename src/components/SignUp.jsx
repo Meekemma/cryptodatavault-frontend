@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Import eye icons
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'; 
 import axios from 'axios';
@@ -15,7 +15,7 @@ const SignUp = () => {
   const { loginWithGoogle } = useContext(AuthContext);
   const BASE_URL = import.meta.env.VITE_BASE_URL;
   const navigate = useNavigate();
-  
+
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -23,7 +23,7 @@ const SignUp = () => {
     password: '',
     password2: '',
   });
-  
+
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -62,12 +62,25 @@ const SignUp = () => {
         toast.error("Registration failed. Please try again.");
       }
     } catch (error) {
-      if (error.response) {
-        console.error(error.response.data); 
-        toast.error(error.response.data.message || "Registration failed. Please try again.");
-      } else {
-        toast.error("An error occurred. Please try again.");
+      let message = 'An error occurred. Please try again.';
+
+      if (error.response?.data) {
+        const data = error.response.data;
+        if (data.message) {
+          message = data.message;
+        } else if (data.detail) {
+          message = data.detail;
+        } else if (typeof data === 'string') {
+          message = data;
+        } else if (typeof data === 'object') {
+          // Display first error if multiple
+          const firstError = Object.values(data)[0];
+          message = Array.isArray(firstError) ? firstError[0] : firstError;
+        }
       }
+
+      console.error('Registration error:', error.response?.data || error);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
@@ -124,7 +137,7 @@ const SignUp = () => {
               />
               <span
                 className="password-toggle-icon"
-                onClick={() => setShowPassword(prevState => !prevState)}
+                onClick={() => setShowPassword(prev => !prev)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
@@ -143,7 +156,7 @@ const SignUp = () => {
               />
               <span
                 className="password-toggle-icon"
-                onClick={() => setShowConfirmPassword(prevState => !prevState)}
+                onClick={() => setShowConfirmPassword(prev => !prev)}
               >
                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
@@ -153,8 +166,9 @@ const SignUp = () => {
             {isLoading ? 'Loading...' : 'Continue'}
           </button>
         </form>
+
         <p className="login-link">
-          Already have an account? 
+          Already have an account?{' '}
           <span 
             className="cursor-pointer hover:underline" 
             onClick={() => navigate('/login')}
@@ -162,16 +176,16 @@ const SignUp = () => {
             Login
           </span>
         </p>
+
         <div className="text-center">
-          <div className="or-divider">
-            <span>OR</span>
-          </div>
+          <div className="or-divider"><span>OR</span></div>
           <button className="google-button" onClick={loginWithGoogle}>
             <img src={google} alt="Google logo" className="google-logo" />
             Continue with Google
           </button>
         </div>
       </div>
+
       <PolicyFooter />
     </>
   );

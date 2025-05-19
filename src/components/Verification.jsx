@@ -38,11 +38,16 @@ const Verification = () => {
       return;
     }
     try {
-      await axios.post(`{BASE_URL}/resend_otp/`, {email});
+      await axios.post(`${BASE_URL}/resend_otp/`, { email });
       toast.success('Verification code resent');
     } catch (error) {
-      console.error('Error resending verification code:', error);
-      toast.error('Error resending verification code');
+      console.error('Error resending verification code:', error.response?.data || error);
+      const message =
+        error.response?.data?.detail ||
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        'Error resending verification code';
+      toast.error(message);
     }
   };
 
@@ -55,7 +60,7 @@ const Verification = () => {
     }
     setIsLoading(true);
     try {
-      const response = await axios.post(`{BASE_URL}/verify_code/`, { code });
+      const response = await axios.post(`${BASE_URL}/verify_code/`, { code });
       if (response.status === 200) {
         toast.success('Code verified successfully');
         navigate('/login');
@@ -63,9 +68,14 @@ const Verification = () => {
         setError('Invalid verification code');
       }
     } catch (error) {
-      setError('Error verifying code');
-      console.error('Error verifying code:', error);
-      toast.error('Error verifying code');
+      const message =
+        error.response?.data?.detail ||
+        error.response?.data?.message ||
+        error.response?.data?.error ||
+        'An unexpected error occurred';
+      setError(message);
+      console.error('Error verifying code:', error.response?.data || error);
+      toast.error(message);
     } finally {
       setIsLoading(false);
     }
