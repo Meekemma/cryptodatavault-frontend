@@ -32,6 +32,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsConditions from './components/TermsConditions';
 import ScrollToTop from './components/ScrollToTop';
 import Qrcode from './pages/Qrcode';
+import CustomResetPasswordConfirm from './components/CustomResetPasswordConfirm';
 // import Translate from './components/Translate';
 
 
@@ -51,6 +52,9 @@ const App = () => {
           <Route path="/referral-page" element={<ReferralList />} />
           <Route path="/change-password" element={<PrivateRoute><ChangePassword /></PrivateRoute>} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/reset_password_confirm" element={<CustomResetPasswordConfirm />} />
+
+          
           <Route path="/login" element={<CustomLogin />} />
           <Route path="/markets" element={<Market />} />
           <Route path="/deposit" element={<CustomPayment />} />
