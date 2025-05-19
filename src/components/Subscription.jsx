@@ -25,9 +25,17 @@ const Subscription = () => {
 
     try {
       const res = await axios.post(`${BASE_URL}/email-subscription/`, formData);
-      if (res.status === 200) {
-        toast.success('Successfully subscribed to the newsletter');
-        setFormData({ email: '' });
+
+      // Consider any 2xx status as success
+      if (res.status >= 200 && res.status < 300) {
+        const successMsg =
+          res.data?.message ||
+          res.data?.detail ||
+          'Successfully subscribed to the newsletter';
+        toast.success(successMsg);
+        setFormData({ email: '' }); // Reset form
+      } else {
+        toast.error('Subscription failed. Please try again.');
       }
     } catch (error) {
       let message = 'Subscription failed. Please try again.';
