@@ -36,6 +36,16 @@ const cardItems = [
       'From 1:10 to 1:500',
       'MT5 (Desktop/Mobile/Web)'
     ]
+  },
+  {
+    title: 'PILOT',
+    price: '$10,000 - $50,000',
+    text1: 'Minimum Deposit',
+    details: [
+      'Fx from 0.2* pips + 6$* on major',
+      'From 1:10 to 1:500',
+      'MT5 (Desktop/Mobile/Web)'
+    ]
   }
 ];
 

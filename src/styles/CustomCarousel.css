@@ -254,3 +254,25 @@ body {
 .h-16 {
   height: 4rem;
 }
+
+
+/* Optional: smooth scroll for desktop */
+@media (min-width: 960px) {
+  .container {
+    scroll-behavior: smooth;
+  }
+
+  .container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .container::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+  }
+
+  .container::-webkit-scrollbar-track {
+    background: #1D2B53;
+  }
+}
+

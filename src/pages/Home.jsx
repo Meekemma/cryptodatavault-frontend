@@ -27,6 +27,7 @@ const Home = () => {
   return (
     <>
       <CryptoContextProvider>
+       
         <CustomAppBar />
         <CustomCarousel/>
         {/* <CustomCards/> */}

@@ -14,7 +14,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import trexiz from '../assets/images/trexiz.png';
-import GoogleTranslate from './GoogleTranslate';
+import Translate from './Translate';
+// import GoogleTranslate from './GoogleTranslate';
 
 const pages = ['Home', 'Markets', 'About-Us', 'Account-Type', 'Partners', 'Contact'];
 const settings = ['Dashboard', 'Logout'];
@@ -88,6 +89,7 @@ const CustomAppBar = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: '#1D2B53' }}>
       <Container maxWidth="xl">
+        <Translate/>
         <Toolbar disableGutters>
           {/* Desktop Logo and Google Translate */}
           <Box
@@ -109,7 +111,7 @@ const CustomAppBar = () => {
                 }}
               />
             </Box>
-            <GoogleTranslate />
+            
           </Box>
 
           {/* Mobile Menu */}
