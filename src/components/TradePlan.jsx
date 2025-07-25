@@ -8,9 +8,19 @@ import { useNavigate } from 'react-router-dom';
 
 const cardItems = [
   {
+    title: 'PILOT',
+    price: '$50 - $500',
+    text1: 'Base Price',
+    details: [
+      'Fx from 0.2* pips + 6$* on major',
+      'From 1:10 to 1:500',
+      'MT5 (Desktop/Mobile/Web)'
+    ]
+  },
+  {
     title: 'STARTER',
     price: '$500 - $2000',
-    text1: 'Minimum Deposit',
+    text1: 'Base Price',
     details: [
       'Fx from 1.8* pips & Crypto 1% *',
       'From 1:10 to 1:500',
@@ -20,7 +30,7 @@ const cardItems = [
   {
     title: 'STANDARD',
     price: '$3000 - $9000',
-    text1: 'Minimum Deposit',
+    text1: 'Base Price',
     details: [
       'Fx from 1.2* pips & Crypto 0.8% *',
       'From 1:10 to 1:500',
@@ -30,23 +40,14 @@ const cardItems = [
   {
     title: 'ADVANCE',
     price: '$10,000 - $50,000',
-    text1: 'Minimum Deposit',
-    details: [
-      'Fx from 0.2* pips + 6$* on major',
-      'From 1:10 to 1:500',
-      'MT5 (Desktop/Mobile/Web)'
-    ]
-  },
-  {
-    title: 'PILOT',
-    price: '$10,000 - $50,000',
-    text1: 'Minimum Deposit',
+    text1: 'Base Price',
     details: [
       'Fx from 0.2* pips + 6$* on major',
       'From 1:10 to 1:500',
       'MT5 (Desktop/Mobile/Web)'
     ]
   }
+  
 ];
 
 const TradePlan = () => {
