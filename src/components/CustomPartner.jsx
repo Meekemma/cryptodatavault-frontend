@@ -12,7 +12,7 @@ import '../styles/CustomCarousel.css';
 
 const CustomPartner = () => {
   useEffect(() => {
-    AOS.init({ duration: 1000,once: true, });
+    AOS.init({ duration: 1000, once: true });
   }, []);
 
   return (
@@ -33,10 +33,9 @@ const CustomPartner = () => {
               Introducing Broker is a partnership program where you can grow your business and earn high rebates as your network expands and your trading volume increases.
             </h5>
             <p className="text-lg">
-              Introduce new traders to Trexiz LTD Trade, 
+              Introduce new traders to Trexiz Limited, 
               build your network as a professional trader and grow your circle with our partnership program. 
-              IB program offers an attractive side business to your already successful trading. 
-              It means generating extra revenue!
+              The IB program offers an attractive side business to your already successful trading — it means generating extra revenue!
             </p>
             <button className="create-account-button">Register now</button>
           </div>
@@ -53,10 +52,9 @@ const CustomPartner = () => {
             </h3>
             <p className="text-lg">
               Satisfied with our service? Tell your friends!
-              Once your friends start trading, you will start earning commissions! 
-              Bring more friends, earn more commissions! Refer a Friend program is available to all clients! 
-              Send your friend a request to join us via Trexiz LTD Trade page. 
-              Alternatively, you can notify an Account Manager directly by e-mailing us at support@safefxside.com
+              Once your friends start trading, you’ll start earning commissions! 
+              Bring more friends, earn more commissions. Our Refer-a-Friend program is open to all clients.
+              Invite your friends directly via your Trexiz LTD Trade dashboard, or notify an Account Manager by emailing <a href="mailto:support@Trexiz.com" className="underline text-blue-700">support@Trexiz.com</a>.
             </p>
             <button className="create-account-button">Register now</button>
           </div>
@@ -72,9 +70,9 @@ const CustomPartner = () => {
               How are the IB commissions added to my account?
             </h3>
             <p className="text-lg">
-              Whenever your client makes a trade, 
-              it will be shown automatically in your IB Room with the calculated commission. 
-              The commissions are added to your IB balance for each and every trade that has been closed by your client and can then be immediately withdrawable.
+              Whenever your referred client makes a trade, 
+              the calculated commission appears instantly in your IB Room. 
+              All closed trades generate commission, which is automatically added to your IB balance and becomes withdrawable immediately.
             </p>
             <button className="create-account-button">Register now</button>
           </div>
@@ -90,11 +88,11 @@ const CustomPartner = () => {
               How can I withdraw my IB commissions?
             </h3>
             <h5 className="text-xl mb-4">
-              Introducing Broker is a partnership program where you can grow your business and earn high rebates as your network expands and your trading volume increases.
+              Withdraw your commissions anytime, with full flexibility.
             </h5>
             <p className="text-lg">
-              You can withdraw your IB commission anytime you want by filling in a withdrawal form from the ClientArea.
-              You can transfer the funds to your Trexiz LTD Trade live account or withdraw them to your bank account or any other available option.
+              Simply complete a withdrawal request via your Client Area. 
+              You can transfer funds to your Trexiz LTD Trade live account or withdraw to your bank account or any supported payment method.
             </p>
             <button className="create-account-button">Register now</button>
           </div>
@@ -110,14 +108,15 @@ const CustomPartner = () => {
               Is there a Master Introducer Program available?
             </h3>
             <p className="text-lg">
-              Yes, a MIB program allows you to refer other partners (Sub IBs) and earn rewards from their clients.
-              If you want to register a client as a Sub IB, they need to register using a special MIB referral link.
+              Yes. The Master Introducing Broker (MIB) program allows you to refer other partners (Sub IBs) and earn commissions from their referred clients.
+              To register someone as a Sub IB, they must sign up using your unique MIB referral link.
             </p>
             <button className="create-account-button">Register now</button>
           </div>
         </div>
       </div>
-      <Footer/>
+
+      <Footer />
     </>
   );
 };

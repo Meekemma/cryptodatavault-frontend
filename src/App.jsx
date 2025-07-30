@@ -35,6 +35,7 @@ import Qrcode from './pages/Qrcode';
 import CustomResetPasswordConfirm from './components/CustomResetPasswordConfirm';
 // import Translate from './components/Translate';
 import './styles/Translate.css'; 
+import FaqPage from './pages/FaqPage';
 
 
 const App = () => {
@@ -46,6 +47,7 @@ const App = () => {
           <Route path="/account-type" element={<Account />} />
           <Route path="/partners" element={<Partner />} />
           <Route path="/about-us" element={<Company />} />
+          <Route path="/faq" element={<FaqPage />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/verification" element={<Verification />} />

@@ -17,7 +17,7 @@ import trexiz from '../assets/images/trexiz.png';
 import Translate from './Translate';
 // import GoogleTranslate from './GoogleTranslate';
 
-const pages = ['Home', 'Markets', 'About-Us', 'Account-Type', 'Partners', 'Contact'];
+const pages = ['Home', 'Markets', 'About-Us', 'Account-Type', 'Partners','Faq', 'Contact'];
 const settings = ['Dashboard', 'Logout'];
 
 const pageRoutes = {
@@ -26,6 +26,7 @@ const pageRoutes = {
   'About-Us': '/about-us',
   'Account-Type': '/account-type',
   Partners: '/partners',
+  Faq: '/faq',
   Contact: '/contact',
   Login: '/login',
   Signup: '/signup',

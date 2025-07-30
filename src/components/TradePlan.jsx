@@ -9,62 +9,45 @@ import { useNavigate } from 'react-router-dom';
 const cardItems = [
   {
     title: 'PILOT',
-    price: '$50 - $500',
-    text1: 'Base Price',
-    details: [
-      'Fx from 0.2* pips + 6$* on major',
-      'From 1:10 to 1:500',
-      'MT5 (Desktop/Mobile/Web)'
-    ]
+    price: '$50 - $499.99',
+    interest: '5% Monthly ROI',
+    benefits: ['Instant Payouts', 'Basic Support'],
   },
   {
     title: 'STARTER',
-    price: '$500 - $2000',
-    text1: 'Base Price',
-    details: [
-      'Fx from 1.8* pips & Crypto 1% *',
-      'From 1:10 to 1:500',
-      'MT5 (Desktop/Mobile/Web)'
-    ]
+    price: '$500 - $1999.99',
+    interest: '7% Monthly ROI',
+    benefits: ['Priority Payouts', 'Dedicated Manager'],
   },
   {
     title: 'STANDARD',
-    price: '$3000 - $9000',
-    text1: 'Base Price',
-    details: [
-      'Fx from 1.2* pips & Crypto 0.8% *',
-      'From 1:10 to 1:500',
-      'MT5 (Desktop/Mobile/Web)'
-    ]
+    price: '$2000 - $8999.99',
+    interest: '10% Monthly ROI',
+    benefits: ['Weekly ROI Reports', 'Advanced Security'],
   },
   {
     title: 'ADVANCE',
     price: '$10,000 - $50,000',
-    text1: 'Base Price',
-    details: [
-      'Fx from 0.2* pips + 6$* on major',
-      'From 1:10 to 1:500',
-      'MT5 (Desktop/Mobile/Web)'
-    ]
-  }
-  
+    interest: '15% Monthly ROI',
+    benefits: ['Personal Advisor', '24/7 Support', 'VIP Access'],
+  },
 ];
 
 const TradePlan = () => {
-    const { user } = useContext(AuthContext); 
-    const navigate = useNavigate(); 
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const handleOnClick = () => {
-        if (user) {
-            navigate('/deposit');
-        } else {
-            navigate('/signup');
-        }
-    };
+  const handleOnClick = () => {
+    if (user) {
+      navigate('/deposit');
+    } else {
+      navigate('/signup');
+    }
+  };
 
-    useEffect(() => {
-      AOS.init({ duration: 1000, once: true });
-    }, []);
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+  }, []);
 
   return (
     <div className="container mx-auto px-1 sm:px-4 my-8" data-aos="fade-up">
@@ -106,14 +89,14 @@ const TradePlan = () => {
                     {item.price}
                   </Typography>
                   <Typography variant="body1" sx={{ mt: 2 }}>
-                    {item.text1}
+                    {item.interest}
                   </Typography>
                 </Box>
                 <Divider sx={{ my: 2, bgcolor: 'white' }} />
                 <Box sx={{ textAlign: 'center' }}>
-                  {item.details.map((detail, idx) => (
+                  {item.benefits.map((benefit, idx) => (
                     <Typography variant="body2" sx={{ mt: idx === 0 ? 0 : 1 }} key={idx}>
-                      {detail}
+                      {benefit}
                     </Typography>
                   ))}
                 </Box>

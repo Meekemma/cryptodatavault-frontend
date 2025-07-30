@@ -9,6 +9,7 @@ import Why from '../components/Why';
 import Footer from '../components/Footer';
 import { CryptoContextProvider } from '../context/CryptoContext';
 import AccountStep from '../components/AccountStep';
+import TestimonialComponent from "../components/TestimonialComponent";
 
 
 const Home = () => {
@@ -35,6 +36,7 @@ const Home = () => {
         <AccountStep />
         <CallBack/>
         <Why/>
+        <TestimonialComponent />
         <Footer/>
       </CryptoContextProvider>
 

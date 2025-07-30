@@ -22,9 +22,10 @@ const Payment = () => {
     const navigate = useNavigate();
 
     const plans = [
-        { value: 'starter', label: 'Starter Plan' },
-        { value: 'standard', label: 'Standard Plan' },
-        { value: 'advanced', label: 'Advance Plan' },
+        { value: 'pilot', label: 'Pilot Plan', min: 50, max: 499.99 },
+        { value: 'starter', label: 'Starter Plan', min: 500, max: 1999.99 },
+        { value: 'standard', label: 'Standard Plan', min: 2000, max: 8999.99 },
+        { value: 'advanced', label: 'Advance Plan', min: 10000, max: 50000 },
     ];
 
     const currencies = [
@@ -46,11 +47,34 @@ const Payment = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        try {
-            const formattedAmount = parseFloat(formData.amount_paid).toFixed(8);
+        const selectedPlan = plans.find((p) => p.value === formData.plan);
+        const amount = parseFloat(formData.amount_paid);
 
-            // Set currency with expiration time (24 hours from now)
-            const expirationTime = Date.now() + 5 * 60 * 1000; // 24 hours in milliseconds
+        if (!selectedPlan) {
+            toast.error('Please select a valid plan.');
+            setIsLoading(false);
+            return;
+        }
+
+        if (isNaN(amount)) {
+            toast.error('Please enter a valid amount.');
+            setIsLoading(false);
+            return;
+        }
+
+        if (amount < selectedPlan.min || amount > selectedPlan.max) {
+            toast.error(
+                `Amount must be between $${selectedPlan.min} and $${selectedPlan.max} for the ${selectedPlan.label}.`
+            );
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const formattedAmount = amount.toFixed(8);
+
+            // Set currency with expiration time (5 minutes from now)
+            const expirationTime = Date.now() + 5 * 60 * 1000;
             const currencyData = {
                 value: formData.currency,
                 expiresAt: expirationTime,
