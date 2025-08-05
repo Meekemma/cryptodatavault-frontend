@@ -21,7 +21,7 @@ const cardItems = [
   },
   {
     title: 'STANDARD',
-    price: '$2000 - $8999.99',
+    price: '$2000 - $9999.99',
     interest: '10% Monthly ROI',
     benefits: ['Weekly ROI Reports', 'Advanced Security'],
   },
