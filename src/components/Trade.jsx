@@ -91,7 +91,7 @@ const Trade = () => {
                     Trading Account Types
                 </h3>
                 <p className="mt-2">
-                    With our 3 types of trading accounts, you will find the complete flexibility to trade at the level you want.
+                    With our 4 types of trading accounts, you will find the complete flexibility to trade at the level you want.
                 </p>
                 <div>
                     <TradePlan />
