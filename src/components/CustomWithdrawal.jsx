@@ -291,7 +291,7 @@ const CustomWithdrawal = () => {
             <li><strong>Limits:</strong> There may be minimum and maximum withdrawal limits based on your selected method. Ensure your request falls within these limits.</li>
             <li><strong>Security:</strong> For your protection, ensure the information provided is correct. We will not ask for sensitive data via email. If you encounter any issues, contact our support team immediately.</li>
           </ul>
-          <p className='text-gray-700 mt-4'>For further assistance, please feel free to contact our support team at <a href="mailto:support@example.com" className="text-blue-500">support@example.com</a>.</p>
+          <p className='text-gray-700 mt-4'>For further assistance, please feel free to contact our support team at <a href="mailto:support@trexiz.com" className="text-blue-500">support@trexiz.com</a>.</p>
         </div>
       </div>
 

@@ -203,8 +203,8 @@ const Payment = () => {
                     </ul>
                     <p className="text-gray-700 mt-4">
                         For assistance, contact{' '}
-                        <a href="mailto:support@example.com" className="text-blue-500">
-                            support@example.com
+                        <a href="mailto:support@trexiz.com" className="text-blue-500">
+                            support@trexiz.com
                         </a>
                         .
                     </p>
