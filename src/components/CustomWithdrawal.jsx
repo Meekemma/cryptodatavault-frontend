@@ -20,6 +20,23 @@ const CustomWithdrawal = () => {
 
   const handleTypeChange = (type) => {
     setWithdrawalType(type);
+    // Clear irrelevant fields when switching type
+    if (type === 'bank') {
+      setFormData((prevData) => ({
+        ...prevData,
+        crypto_currency: '',
+        crypto_address: '',
+      }));
+    } else if (type === 'crypto') {
+      setFormData((prevData) => ({
+        ...prevData,
+        bank_name: '',
+        bank_account_number: '',
+        bank_account_name: '',
+        bank_swift_code: '',
+        bank_routing_number: '',
+      }));
+    }
   };
 
   const handleChange = (e) => {
@@ -158,13 +175,13 @@ const CustomWithdrawal = () => {
                   </div>
 
                   <div className="mb-4">
-                    <label htmlFor="bank_account_number">Bank Account Name</label>
+                    <label htmlFor="bank_account_name">Bank Account Name</label>
                     <input 
                       type="text" 
                       id="bank_account_name" 
                       name="bank_account_name" 
                       className="border px-4 py-2 w-full" 
-                      placeholder="Enter bank account number"
+                      placeholder="Enter bank account name"
                       value={formData.bank_account_name}
                       onChange={handleChange}
                     />
